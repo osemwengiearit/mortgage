@@ -24,20 +24,28 @@ form.addEventListener("submit", function (e) {
 
 function calculateMortgage() {
   const principal = Number(amount.value);
-
   const years = Number(term.value);
-
   const annualRate = Number(rate.value);
 
   const monthlyRate = annualRate / 100 / 12;
-
   const months = years * 12;
 
-  const monthly =
-    (principal * (monthlyRate * Math.pow(1 + monthlyRate, months))) /
-    (Math.pow(1 + monthlyRate, months) - 1);
+  let monthly;
+  let total;
 
-  const total = monthly * months;
+  if (repayment.checked) {
+    // Repayment Mortgage
+    monthly =
+      (principal * (monthlyRate * Math.pow(1 + monthlyRate, months))) /
+      (Math.pow(1 + monthlyRate, months) - 1);
+
+    total = monthly * months;
+  } else if (interestOnly.checked) {
+    // Interest Only Mortgage
+    monthly = principal * monthlyRate;
+
+    total = monthly * months;
+  }
 
   monthlyPayment.textContent =
     "£" +
