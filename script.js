@@ -39,7 +39,17 @@ function calculateMortgage() {
 
   const total = monthly * months;
 
-  monthlyPayment.textContent = "£" + monthly.toFixed(2);
+  monthlyPayment.textContent =
+    "£" +
+    monthly.toLocaleString(undefined, {
+      minimumFractionDigits: 2,
+      maximumFractionDigits: 2,
+    });
 
-  totalPayment.textContent = "£" + total.toFixed(2);
+  totalPayment.textContent =
+    "£" +
+    total.toLocaleString(undefined, {
+      minimumFractionDigits: 2,
+      maximumFractionDigits: 2,
+    });
 }
