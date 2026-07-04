@@ -97,15 +97,46 @@
       </section>
 
       <!-- Right Section -->
-      <section class="calculator__results">
-        <img src="./assets/images/illustration-empty.svg" alt="" />
+      <section class="calculator__results" id="results">
+        <div id="empty-state">
+          <img
+            src="./assets/images/illustration-empty.svg"
+            alt="Empty illustration"
+          />
 
-        <h2>Results shown here</h2>
+          <h2>Results shown here</h2>
 
-        <p>
-          Complete the form and click "calculate repayments" to see what your
-          monthly repayments would be.
-        </p>
+          <p>
+            Complete the form and click "calculate repayments" to see what your
+            monthly repayments would be.
+          </p>
+        </div>
+
+        <div id="completed-state" class="hidden">
+          <h2>Your results</h2>
+
+          <p class="results-description">
+            Your results are shown below based on the information you provided.
+            To adjust the results, edit the form and click "calculate
+            repayments" again.
+          </p>
+
+          <div class="result-card">
+            <div class="monthly">
+              <p>Your monthly repayments</p>
+
+              <h1 id="monthly-payment">£0.00</h1>
+            </div>
+
+            <hr />
+
+            <div class="total">
+              <p>Total you'll repay over the term</p>
+
+              <h3 id="total-payment">£0.00</h3>
+            </div>
+          </div>
+        </div>
       </section>
     </main>
 
