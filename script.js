@@ -1,3 +1,4 @@
+const clearBtn = document.getElementById("clear-btn");
 const form = document.getElementById("mortgage-form");
 
 const amount = document.getElementById("amount");
@@ -29,6 +30,36 @@ form.addEventListener("submit", function (e) {
 
   emptyState.classList.add("hidden");
   completedState.classList.remove("hidden");
+});
+
+clearBtn.addEventListener("click", function (e) {
+  e.preventDefault();
+
+  form.reset();
+
+  // Hide completed results
+  completedState.classList.add("hidden");
+
+  // Show empty state
+  emptyState.classList.remove("hidden");
+
+  // Reset displayed values
+  monthlyPayment.textContent = "£0.00";
+  totalPayment.textContent = "£0.00";
+
+  // Hide all error messages
+  amountError.classList.add("hidden");
+  termError.classList.add("hidden");
+  rateError.classList.add("hidden");
+  typeError.classList.add("hidden");
+
+  // Remove error styling
+  amount.parentElement.classList.remove("input-error");
+  term.parentElement.classList.remove("input-error");
+  rate.parentElement.classList.remove("input-error");
+
+  // Focus first input
+  amount.focus();
 });
 
 function calculateMortgage() {
