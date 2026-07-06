@@ -107,7 +107,7 @@ body {
   border: 1px solid var(--slate300);
   border-radius: 6px;
   overflow: hidden;
-  transition: 0.3s;
+  transition: all 0.3s ease;
 }
 
 .input-group:hover {
@@ -124,6 +124,7 @@ body {
   outline: none;
   padding: 13px;
   font-size: 1rem;
+  font-weight: 700;
   font-family: inherit;
 }
 
@@ -132,6 +133,15 @@ body {
   color: var(--slate700);
   padding: 15px 18px;
   font-weight: 700;
+}
+
+.input-group.input-error {
+  border-color: var(--red);
+}
+
+.input-group.input-error span {
+  background: var(--red);
+  color: white;
 }
 
 .double-input {
@@ -160,6 +170,11 @@ body {
 .radio-option input {
   width: 18px;
   height: 18px;
+}
+
+.radio-option:has(input:checked) {
+  border-color: var(--lime);
+  background: #fffde8;
 }
 
 .calculate-btn {
@@ -195,10 +210,6 @@ body {
   color: hsl(4, 69%, 50%);
   font-size: 14px;
   margin-top: 8px;
-}
-
-.input-error {
-  border: 1px solid hsl(4, 69%, 50%) !important;
 }
 
 .results-description {
