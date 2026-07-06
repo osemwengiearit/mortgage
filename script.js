@@ -16,6 +16,10 @@ const completedState = document.getElementById("completed-state");
 form.addEventListener("submit", function (e) {
   e.preventDefault();
 
+  if (!validateForm()) {
+    return;
+  }
+
   calculateMortgage();
 
   emptyState.classList.add("hidden");
@@ -60,4 +64,53 @@ function calculateMortgage() {
       minimumFractionDigits: 2,
       maximumFractionDigits: 2,
     });
+}
+
+const amountError = document.getElementById("amount-error");
+const termError = document.getElementById("term-error");
+const rateError = document.getElementById("rate-error");
+const typeError = document.getElementById("type-error");
+
+function validateForm() {
+  let valid = true;
+
+  // Hide previous errors
+  amountError.classList.add("hidden");
+  termError.classList.add("hidden");
+  rateError.classList.add("hidden");
+  typeError.classList.add("hidden");
+
+  // Remove red borders
+  amount.classList.remove("border-red-500");
+  term.classList.remove("border-red-500");
+  rate.classList.remove("border-red-500");
+
+  // Mortgage Amount
+  if (amount.value.trim() === "") {
+    amountError.classList.remove("hidden");
+    amount.classList.add("border-red-500");
+    valid = false;
+  }
+
+  // Mortgage Term
+  if (term.value.trim() === "") {
+    termError.classList.remove("hidden");
+    term.classList.add("border-red-500");
+    valid = false;
+  }
+
+  // Interest Rate
+  if (rate.value.trim() === "") {
+    rateError.classList.remove("hidden");
+    rate.classList.add("border-red-500");
+    valid = false;
+  }
+
+  // Mortgage Type
+  if (!repayment.checked && !interestOnly.checked) {
+    typeError.classList.remove("hidden");
+    valid = false;
+  }
+
+  return valid;
 }

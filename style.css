@@ -191,6 +191,16 @@ body {
   display: none;
 }
 
+.error-message {
+  color: hsl(4, 69%, 50%);
+  font-size: 14px;
+  margin-top: 8px;
+}
+
+.input-error {
+  border: 1px solid hsl(4, 69%, 50%) !important;
+}
+
 .results-description {
   color: var(--slate300);
   margin: 20px 0 30px;
