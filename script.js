@@ -13,6 +13,11 @@ const interestOnly = document.getElementById("interest");
 const emptyState = document.getElementById("empty-state");
 const completedState = document.getElementById("completed-state");
 
+const amountError = document.getElementById("amount-error");
+const termError = document.getElementById("term-error");
+const rateError = document.getElementById("rate-error");
+const typeError = document.getElementById("type-error");
+
 form.addEventListener("submit", function (e) {
   e.preventDefault();
 
@@ -66,11 +71,6 @@ function calculateMortgage() {
     });
 }
 
-const amountError = document.getElementById("amount-error");
-const termError = document.getElementById("term-error");
-const rateError = document.getElementById("rate-error");
-const typeError = document.getElementById("type-error");
-
 function validateForm() {
   let valid = true;
 
@@ -81,28 +81,28 @@ function validateForm() {
   typeError.classList.add("hidden");
 
   // Remove red borders
-  amount.classList.remove("border-red-500");
-  term.classList.remove("border-red-500");
-  rate.classList.remove("border-red-500");
+  amount.parentElement.classList.remove("input-error");
+  term.parentElement.classList.remove("input-error");
+  rate.parentElement.classList.remove("input-error");
 
   // Mortgage Amount
   if (amount.value.trim() === "") {
     amountError.classList.remove("hidden");
-    amount.classList.add("border-red-500");
+    amount.parentElement.classList.add("input-error");
     valid = false;
   }
 
   // Mortgage Term
   if (term.value.trim() === "") {
     termError.classList.remove("hidden");
-    term.classList.add("border-red-500");
+    term.parentElement.classList.add("input-error");
     valid = false;
   }
 
   // Interest Rate
   if (rate.value.trim() === "") {
     rateError.classList.remove("hidden");
-    rate.classList.add("border-red-500");
+    rate.parentElement.classList.add("input-error");
     valid = false;
   }
 
